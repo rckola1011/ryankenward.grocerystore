@@ -10,7 +10,7 @@ import com.ryankenward.grocerystore.models.enums.Departments;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import static org.junit.Assert.*;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -21,37 +21,37 @@ public class StoreTest {
     
     @Test
     public void getAllItems_ShouldBeFour() {
-        Item milk = new Item("Dairy-O", "Non-fat skim milk", new Price(2.99, 2.79, 2.50, false));
-        Item cottageCheese = new Item("Tillamook", "2% milk fat cottage cheese", new Price(4.99, 4.50, 3.99, true));
+        Item milk = new Item("Dairy-O", "Non-fat skim milk", new Price(2.99, 2.79, 2.50, false), 10);
+        Item cottageCheese = new Item("Tillamook", "2% milk fat cottage cheese", new Price(4.99, 4.50, 3.99, true), 14);
         Department dairyDept = new Department(Departments.Dairy);
         dairyDept.setItems(new HashSet<Item>(Arrays.asList(milk, cottageCheese)));
         
-        Item corn = new Item("Farmer Joe's", "White corn", new Price(0.99, 0.79, 0.49, true));
-        Item lettuce = new Item("Simply Organic", "Half head of organic lettuce", new Price(3.99, 3.99, 3.99, false));
+        Item corn = new Item("Farmer Joe's", "White corn", new Price(0.99, 0.79, 0.49, true), 22);
+        Item lettuce = new Item("Simply Organic", "Half head of organic lettuce", new Price(3.99, 3.99, 3.99, false), 6);
         Department produceDept = new Department(Departments.Produce);
         produceDept.setItems(new HashSet<Item>(Arrays.asList(corn, lettuce)));
         
         Set<Department> departments = new HashSet<>(Arrays.asList(dairyDept, produceDept));
         Store sut = new Store(1, "Ryan's Groceries", true, departments);
-        assertEquals(sut.getAllItems().size(), 4);
+        Assert.assertEquals(4, sut.getAllItems().size());
     }
     
     @Test
     public void getDepartmentByName_ShouldBeProduct() {
-        Item corn = new Item("Farmer Joe's", "White corn", new Price(0.99, 0.79, 0.49, true));
-        Item lettuce = new Item("Simply Organic", "Half head of organic lettuce", new Price(3.99, 3.99, 3.99, false));
+        Item corn = new Item("Farmer Joe's", "White corn", new Price(0.99, 0.79, 0.49, true), 22);
+        Item lettuce = new Item("Simply Organic", "Half head of organic lettuce", new Price(3.99, 3.99, 3.99, false), 6);
         Department produceDept = new Department(Departments.Produce);
         produceDept.setItems(new HashSet<Item>(Arrays.asList(corn, lettuce)));
         
         Set<Department> departments = new HashSet<>(Arrays.asList(produceDept));
         Store sut = new Store(1, "Ryan's Groceries", true, departments);
-        assertEquals(sut.getDepartmentByName(Departments.Produce), produceDept);
+        Assert.assertEquals(produceDept, sut.getDepartmentByName(Departments.Produce));
     }
     
     @Test
     public void getDepartmentByName_ShouldBeNull() {
         Set<Department> departments = new HashSet<>();
         Store sut = new Store(1, "Ryan's Groceries", true, departments);
-        assertEquals(sut.getDepartmentByName(Departments.Produce), null);
+        Assert.assertEquals(null, sut.getDepartmentByName(Departments.Produce));
     }
 }

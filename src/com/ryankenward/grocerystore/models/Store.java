@@ -53,8 +53,11 @@ public class Store {
         return items;
     }
     
+    public boolean hasDepartment(Departments name) {
+        return getDepartmentByName(name) != null;
+    }
+    
     public boolean hasItem(Item item) {
-        Set<Item> items = getAllItems();
-        return items.contains(item);
+        return getAllItems().contains(item);
     }
 }

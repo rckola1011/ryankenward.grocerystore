@@ -7,7 +7,6 @@ package com.ryankenward.grocerystore.models;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 /**
  *
@@ -18,6 +17,7 @@ public class Cart {
     private Map<Item, Integer> items;
     
     public Cart() {
+        this.items = new HashMap<>();
     }
     
     public Cart(HashMap<Item, Integer> items) {
@@ -27,46 +27,73 @@ public class Cart {
         this.items = items;
     }
     
-    public void addItem(Item item, int quantity) {
+    public Map<Item, Integer> getItems() {
+        return this.items;
+    }
+    
+    public boolean addItem(Item item) {
+        return addItem(item, 1);
+    }
+    
+    public boolean addItem(Item item, int quantity) {
         if (item == null)
             throw new IllegalArgumentException("Item cannot be null.");
         
         if (quantity <= 0)
             throw new IllegalArgumentException("Quantity must be greater than zero.");
         
+        // *Required* to keep item quantity available up to date
+        if (!item.subtractQuantityAvailable(quantity))
+            return false;
+        
         if (items.containsKey(item))
             // If item already exists, add quantity of existing item to given quantity
             quantity += items.get(item);
         // Replace existing item with given item and updated quantity, or add new item and initial quantity
         items.put(item, quantity);
+        return true;
     }
     
-    public double getTotal(Shopper shopper) {
-        if (shopper == null)
-            throw new IllegalArgumentException("Shopper cannot be null.");
+    public boolean removeItem(Item item) {
+        if (item == null)
+            throw new IllegalArgumentException("Item cannot be null.");
         
-        if (this.items == null)
-            return 0;
-        
-        double total = 0;
-        for (Entry<Item, Integer> entry : this.items.entrySet()) {
-            Price itemPrice = entry.getKey().getPrice();
-            if (shopper.getMember()) {   // Shopper is a member
-                if (itemPrice.getOnSale() 
-                        && (itemPrice.getSalePrice() < itemPrice.getMemberPrice()))
-                    // Use sale price if item is on sale and sale price is lower than member price
-                    total += itemPrice.getSalePrice();
-                else
-                    // Use member price if item is not on sale or member price is lower than sales price
-                    total += itemPrice.getMemberPrice();
-            } else if (itemPrice.getOnSale()) {
-                // Use sale price if item is on sale and shopper is not a member
-                total += itemPrice.getSalePrice();
-            } else {
-                // Use original price if shopper is not a member and the item is not on sale
-                total += itemPrice.getOriginalPrice();
-            }
+        if (!this.items.containsKey(item)) {
+            System.out.println("The item was not found in the cart.");
+            return false;
         }
-        return total;
+        
+        // Get the quantity of the item in the cart
+        int quantity = items.get(item);
+        // Remove item entirely from cart
+        return removeItem(item, quantity);
+    }
+    
+    public boolean removeItem(Item item, int quantity) {
+        if (item == null)
+            throw new IllegalArgumentException("Item cannot be null.");
+        
+        if (quantity <= 0)
+            throw new IllegalArgumentException("Quantity must be greater than zero.");
+        
+        if (!this.items.containsKey(item)) {
+            System.out.println("The item was not found in the cart.");
+            return false;
+        }
+        
+        // Get the quantity of the item in the cart
+        int totalQuantity = items.get(item);
+        if (totalQuantity < quantity) {
+            System.out.println("Quantity to remove is greater than the available quantity of the item in the cart.");
+            return false;
+        }
+        
+        // *Required* to keep item quantity available up to date
+        if (!item.addQuantityAvailable(quantity))
+            return false;
+        
+        // Remove item and quantity mapping from cart
+        items.remove(item);
+        return true;
     }
 }
