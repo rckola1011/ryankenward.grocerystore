@@ -1,0 +1,48 @@
+1,Produce,Joe’s Farm,White ear of corn,0.99,0.79,0,TRUE,50
+1,Produce,Joe’s Farm,Half head of lettuce - Organic,3.99,3.79,0,FALSE,12
+1,Produce,Maryville,Red tomato,0.79,0.69,0,TRUE,30
+1,Deli,Boar’s Head,Honey ham - 1 lb.,7.99,5.99,0,TRUE,15
+1,Deli,Boar’s Head,German Bologna - 1 lb.,4.99,4.49,0,TRUE,40
+1,Deli,Ryan’s Brand,I think it’s ham,2.99,2.00,0,TRUE,50
+1,Bakery,Ken’s,Buttery croissant,1.29,1,0,TRUE,36
+1,Dairy,Dairy Gold,Skim milk - 1 gallon,3.99,3.79,0,FALSE,12
+1,Dairy,Dairy Gold,2% milk - 1 gallon,3.99,3.79,0,FALSE,10
+1,Dairy,Ryan’s Brand,Skim milk - 1 gallon (possibly expired),1.99,1.79,0,TRUE,4
+1,Frozen,Pirate’s Bay,Frozen fish sticks,3.99,3.29,0,TRUE,6
+1,Frozen,Kellog’s,Eggo Waffles,3.99,2.99,0,FALSE,8
+1,Frozen,Tyson,Buffalo chicken strips - family size,10.99,8.99,0,TRUE,4
+1,Frozen,Red Barron,Peperoni Pizza - thin crust,6.29,4.99,0,TRUE,9
+1,Packaged,Kellog’s,Pop tarts - strawberry,2.99,2.50,0,TRUE,6
+1,Packaged,Kellog’s,Cinnamon Toast Crunch - 19 oz,2.99,2.50,0,TRUE,6
+1,Packaged,Post,Raisin Nut Bran,4.99,4.79,0,FALSE,2
+1,Packaged,Del Monte,Canned Pineapple,1.29,0.99,0,TRUE,10
+1,Packaged,Ryan’s Brand,Powdered Waffle Mix - Less cardboard taste!,0.99,0.79,0,FALSE,8
+2,Produce,Bob’s Farm,Yellow ear of corn,0.79,0.25,0.25,TRUE,30
+2,Produce,Bob’s Farm,Head of lettuce,2.99,2.00,1.79,FALSE,6
+2,Produce,Maryville,Red tomato,0.69,0.50,0.50,FALSE,21
+2,Deli,Boar’s Head,Honey ham - 1 lb.,7.99,5.79,5.49,TRUE,6
+2,Deli,Boar’s Head,Deli turkey - 1 lb.,6.99,5.79,5.49,TRUE,5
+2,Bakery,Franz,Croissant,0.99,0.79,0.69,TRUE,24
+2,Dairy,Dairy Gold,Skim milk - 1 gallon,3.99,3.79,3.79,TRUE,2
+2,Dairy,Dairy Gold,1% milk - 1 gallon,3.99,3.79,3.79,TRUE,1
+2,Dairy,Dairy Gold,2% milk - 1 gallon,3.99,3.79,3.79,TRUE,8
+2,Frozen,Pirate’s Bay,Frozen fish sticks,3.99,3.29,2.50,TRUE,3
+2,Frozen,Kellog’s,Eggo Waffles,3.49,2.50,2.50,TRUE,5
+2,Frozen,Tyson,Buffalo chicken strips - family size,9.99,8.99,8.99,FALSE,3
+2,Frozen,Red Barron,Peperoni Pizza - thin crust,5.99,4.00,4.00,TRUE,200
+2,Packaged,Kellog’s,Pop tarts - s’mores,2.99,2.50,2.25,TRUE,7
+2,Packaged,Kellog’s,Cinnamon Toast Crunch - 19 oz,2.99,2.25,2.25,FALSE,4
+2,Packaged,Post,Raisin Nut Bran,4.99,4.79,4.79,FALSE,18
+2,Packaged,Del Monte,Canned Pineapple,1.29,0.99,0.88,TRUE,30
+3,Produce,Local Farms,White ear of corn - organic,1.99,1.79,0.99,TRUE,50
+3,Produce,Local Farms,Peach - organic,2.99,2.79,2.00,FALSE,40
+3,Produce,Local Farms,Red tomato - organic,2.99,2.49,2.00,TRUE,36
+3,Produce,Local Farms,Honey Crisp apple - organic,4.99,3.99,2.25,TRUE,12
+3,Produce,Local Farms,Gala apple - organic,3.99,3.50,1.99,TRUE,24
+3,Deli,Fresh Meat Co.,Butcher ham - 1 lb.,14.99,12.99,9.99,TRUE,18
+3,Deli,Fresh Meat Co.,Natural fresh turkey - 1 lb.,17.99,15.99,11.99,TRUE,6
+3,Bakery,Ken’s,Croissant,1.49,1.29,1,TRUE,12
+3,Bakery,Ken’s,Half loaf of good bread,7.99,7.99,5.99,TRUE,5
+3,Bakery,Ken’s,French Baguette,3.99,3.79,2.99,TRUE,12
+3,Bakery,Ken’s,Cupcake - raspberry,1.99,1.99,1.89,FALSE,26
+3,Frozen,Simply Organic,Pure vanilla bean ice cream - half gallon,8.99,6.00,6.00,TRUE,4

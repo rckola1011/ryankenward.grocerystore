@@ -5,7 +5,6 @@
  */
 package com.ryankenward.grocerystore.models;
 
-import com.ryankenward.grocerystore.models.enums.Departments;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,9 +17,9 @@ public class Department {
     private String name;
     private Set<Item> items;
     
-    public Department(Departments department) {
-        this.name = department.toString();
-        this.items = new HashSet<Item>();
+    public Department(String department) {
+        this.name = department;
+        this.items = new HashSet<>();
     }
     
     public String getName() {

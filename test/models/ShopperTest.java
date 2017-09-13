@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package models;
 
 import com.ryankenward.grocerystore.models.*;
@@ -48,7 +43,7 @@ public class ShopperTest {
     public void getItemPrice_ShouldBeThreeNintyNine() {
         Item corn = new Item("Farmer Joe's", "White corn", new Price(0.99, 0.79, 0.49, true), 22);
         Item lettuce = new Item("Simply Organic", "Half head of organic lettuce", new Price(3.99, 3.99, 3.99, false), 6);
-        Department produceDept = new Department(Departments.Produce);
+        Department produceDept = new Department(Departments.Produce.toString());
         produceDept.setItems(new HashSet<Item>(Arrays.asList(corn, lettuce)));
         Set<Department> departments = new HashSet<>(Arrays.asList(produceDept));
         Store store = new Store(1, "Ryan's Groceries", true, departments);

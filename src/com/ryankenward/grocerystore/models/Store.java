@@ -5,7 +5,6 @@
  */
 package com.ryankenward.grocerystore.models;
 
-import com.ryankenward.grocerystore.models.enums.Departments;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -43,8 +42,8 @@ public class Store {
         return this.departments;
     }
     
-    public Department getDepartmentByName(Departments name) {
-        Department department = this.departments.stream().filter(d -> d.getName().equals(name.toString())).findFirst().orElse(null);
+    public Department getDepartmentByName(String name) {
+        Department department = this.departments.stream().filter(d -> d.getName().equals(name)).findFirst().orElse(null);
         return department;
     }
     
@@ -53,7 +52,7 @@ public class Store {
         return items;
     }
     
-    public boolean hasDepartment(Departments name) {
+    public boolean hasDepartment(String name) {
         return getDepartmentByName(name) != null;
     }
     
