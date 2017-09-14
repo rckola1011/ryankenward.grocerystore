@@ -1,6 +1,8 @@
 package com.ryankenward.grocerystore.controllers;
 
+import com.ryankenward.grocerystore.models.Store;
 import com.ryankenward.grocerystore.models.io.*;
+import java.util.Set;
 
 /**
  *
@@ -14,6 +16,10 @@ public class SetupController {
     public void setStoreInput(StoreInput storeInput) {
         this.storeInput = storeInput;
     }
+    
+    public void setDepartmentInput(DepartmentInput departmentInput) {
+        this.departmentInput = departmentInput;
+    }
 
     public void readStoreInput() {
         StoreInput storeInput = new StoreInput();
@@ -21,8 +27,21 @@ public class SetupController {
         setStoreInput(storeInput);
     }
     
-    public void readItemInput() {
+    public void readDepartmentInput() {
+        DepartmentInput departmentInput = new DepartmentInput();
+        departmentInput.readDepartmentsByStoreInput();
+        setDepartmentInput(departmentInput);
+    }
+    
+    public void CreateStoresFromInput() {
+        if (this.storeInput == null)
+            readStoreInput();
         
+        if (this.departmentInput == null)
+            readDepartmentInput();
+        
+        StoreFactory storeFactory = new StoreFactory();
+        Set<Store> stores = storeFactory.createStoresFromInput(storeInput, departmentInput);
     }
     
 }

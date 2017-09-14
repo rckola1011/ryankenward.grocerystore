@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ryankenward.grocerystore.models;
 
 import java.util.HashSet;
@@ -20,6 +15,11 @@ public class Department {
     public Department(String department) {
         this.name = department;
         this.items = new HashSet<>();
+    }
+    
+    public Department(String department, HashSet<Item> items) {
+        this.name = department;
+        setItems(items);
     }
     
     public String getName() {
@@ -43,7 +43,5 @@ public class Department {
         
         this.items.add(item);
     }
-    
-    
     
 }

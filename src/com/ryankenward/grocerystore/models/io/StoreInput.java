@@ -29,7 +29,7 @@ public class StoreInput {
         setStores(createStoresFromInput(storeInput));
     }
     
-    private Set<Store> createStoresFromInput(List<String[]> storeInput) {
+    public Set<Store> createStoresFromInput(List<String[]> storeInput) {
         Set<Store> createdStores = new HashSet<>();
         for (String[] storeData : storeInput) {
             try {
@@ -44,6 +44,9 @@ public class StoreInput {
                 e.printStackTrace();
             } catch (NumberFormatException e) {
                 System.err.println("Error converting string to number.");
+                e.printStackTrace();
+            } catch (Exception e) {
+                System.err.println("Error creating Store object.");
                 e.printStackTrace();
             }
         }
