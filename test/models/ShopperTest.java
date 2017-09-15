@@ -17,7 +17,7 @@ public class ShopperTest {
     @Test
     public void shop_ShouldBeAtStore() {
         Set<Department> departments = new HashSet<>();
-        Store store = new Store(1, "Ryan's Groceries", true, departments);
+        GroceryStore store = new GroceryStore(1, "Ryan's Groceries", true, departments);
         
         Shopper sut = new Shopper("Test Shoppie");
         sut.shop(store, true);
@@ -30,7 +30,7 @@ public class ShopperTest {
     @Test
     public void getItemPrice_ShouldBeZero() {
         Set<Department> departments = new HashSet<>();
-        Store store = new Store(1, "Ryan's Groceries", true, departments);
+        GroceryStore store = new GroceryStore(1, "Ryan's Groceries", true, departments);
         Shopper shopper = new Shopper("Test Shoppie");
         shopper.shop(store, false);
         
@@ -46,7 +46,7 @@ public class ShopperTest {
         Department produceDept = new Department(Departments.Produce.toString());
         produceDept.setItems(new HashSet<Item>(Arrays.asList(corn, lettuce)));
         Set<Department> departments = new HashSet<>(Arrays.asList(produceDept));
-        Store store = new Store(1, "Ryan's Groceries", true, departments);
+        GroceryStore store = new GroceryStore(1, "Ryan's Groceries", true, departments);
         Shopper shopper = new Shopper("Test Shoppie");
         shopper.shop(store, false);
         shopper.getCart().addItem(corn);

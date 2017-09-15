@@ -13,7 +13,7 @@ public class SetupControllerTest {
     @Test
     public void createStoresFromInput_ShouldBeStores() {
         SetupController sut = new SetupController();
-        sut.CreateStoresFromInput();
+        sut.createStoresFromInput();
     }
 
 }

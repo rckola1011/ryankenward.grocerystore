@@ -15,29 +15,21 @@ import java.util.stream.Collectors;
  */
 public class DepartmentInput {
     
-    private static final String DEPARTMENT_INPUT_FILE_PATH = "input" + File.separator + "items.csv";
-    private Map<Integer, Set<Department>> departmentsByStore;
-    
-    public Map<Integer, Set<Department>> getDepartmentsByStore() {
-        return this.departmentsByStore;
-    }
-    
-    private void setDepartmentsByStore(Map<Integer, Set<Department>> departmentsByStore) {
-        this.departmentsByStore = departmentsByStore;
-    }
+    private static final String INPUT_FILE_PATH = "input" + File.separator + "items.csv";
 
-    public void readDepartmentsByStoreInput() {
-        readDepartmentsByStoreInput(DEPARTMENT_INPUT_FILE_PATH);
+    public List<String[]> readInput() {
+        return readInput(INPUT_FILE_PATH);
     }
     
-    public void readDepartmentsByStoreInput(String filePath) {
+    public List<String[]> readInput(String filePath) {
         InputReader inputReader = new InputReader();
-        List<String[]> departmentInput = inputReader.readCsv(filePath);
-        
-        Map<Integer, List<String[]>> departmentsByStoreInput = departmentInput.stream().collect(
+        return inputReader.readCsv(filePath);
+    }
+    
+    public Map<Integer, Set<Department>> createFromInput(List<String[]> departmentsInput) {
+        Map<Integer, List<String[]>> departmentsByStoreInput = departmentsInput.stream().collect(
                 Collectors.groupingBy(s -> Integer.parseInt(s[0])));
-
-        setDepartmentsByStore(createDepartmentsByStoreFromInput(departmentsByStoreInput));
+        return createDepartmentsByStoreFromInput(departmentsByStoreInput);
     }
     
     public Map<Integer, Set<Department>> createDepartmentsByStoreFromInput(Map<Integer, List<String[]>> departmentsByStoreInput) {
@@ -59,7 +51,7 @@ public class DepartmentInput {
     public Map<String, Set<Item>> createItemsByDepartmentNameFromInput(Map<String, List<String[]>> itemsByDepartmentNameInput) {
         ItemInput itemInput = new ItemInput();
         Map<String, Set<Item>> createdItemsByDepartmentName = new HashMap<>();
-        itemsByDepartmentNameInput.forEach((k,v) -> createdItemsByDepartmentName.put(k, itemInput.createItemsByDepartmentFromInput(v)));
+        itemsByDepartmentNameInput.forEach((k,v) -> createdItemsByDepartmentName.put(k, itemInput.createFromInput(v)));
         return createdItemsByDepartmentName;
     }
     

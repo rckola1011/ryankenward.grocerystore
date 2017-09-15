@@ -1,6 +1,6 @@
 package models.io;
 
-import com.ryankenward.grocerystore.models.io.DepartmentInput;
+import com.ryankenward.grocerystore.models.io.GroceryStoreInput;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -16,10 +16,10 @@ import org.junit.Test;
  *
  * @author rckola1011
  */
-public class DepartmentInputTest {
+public class GroceryStoreInputTest {
     
     public static final String TEST_INPUT_DIRECTORY = "input" + File.separator + "test" + File.separator;
-    public static final String TEST_FILE_NAME = "departmentInputTest.csv";
+    public static final String TEST_FILE_NAME = "storeInputTest.csv";
     
     @Before
     public void setUp() {
@@ -35,13 +35,11 @@ public class DepartmentInputTest {
             }
             writer = new FileWriter(TEST_INPUT_DIRECTORY + TEST_FILE_NAME);
             
-            writer.append("1,Produce,Joe’s Farm,Half head of lettuce - Organic,3.99,3.79,0,FALSE,12");
+            writer.append("1,Ryan’s Grocery Co-op,FALSE");
             writer.append("\n");
-            writer.append("1,Produce,Maryville,Red tomato,0.79,0.69,0,TRUE,30");
+            writer.append("2,Food Lion,TRUE");
             writer.append("\n");
-            writer.append("2,Produce,Bob’s Farm,Yellow ear of corn,0.79,0.25,0.25,TRUE,30");
-            writer.append("\n");
-            writer.append("2,Deli,Boar’s Head,Honey ham - 1 lb.,7.99,5.79,5.49,TRUE,6");
+            writer.append("3,Green Zebra,TRUE");
             
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -58,16 +56,16 @@ public class DepartmentInputTest {
             }
         }
     }
-    
+
     @Test
-    public void readInput_ShouldBeListOfStringArrays() {
-        DepartmentInput sut = new DepartmentInput();
-        List<String[]> input = sut.readInput(TEST_INPUT_DIRECTORY + TEST_FILE_NAME);
+    public void readInput_ShouldBeListOfSringArrays() {
+        GroceryStoreInput sut = new GroceryStoreInput();
+        List<String[]> input = sut.readInput();
         
         assertThat(input.isEmpty(), is(equalTo(false)));
-        assertThat(input.size(), is(equalTo(4)));
+        assertThat(input.size(), is(equalTo(3)));
         for (String[] s : input) {
-            assertThat(s.length, is(equalTo(9)));
+            assertThat(s.length, is(equalTo(3)));
             assertThat(Integer.parseInt(s[0]), instanceOf(Integer.class));
         }
     }

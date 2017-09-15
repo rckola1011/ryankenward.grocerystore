@@ -4,17 +4,17 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- *
+ * 
  * @author rckola1011
  */
-public class Store {
+public class GroceryStore {
     
     private int storeNumber;
     private String name;
     private boolean memberClub;
     private Set<Department> departments;
     
-    public Store(int storeNumber, String name, boolean memberClub, Set<Department> departments) {
+    public GroceryStore(int storeNumber, String name, boolean memberClub, Set<Department> departments) {
         this.storeNumber = storeNumber;
         this.name = name;
         this.memberClub = memberClub;

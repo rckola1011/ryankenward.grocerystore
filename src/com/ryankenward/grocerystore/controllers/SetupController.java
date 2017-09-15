@@ -1,7 +1,9 @@
 package com.ryankenward.grocerystore.controllers;
 
-import com.ryankenward.grocerystore.models.Store;
+import com.ryankenward.grocerystore.models.*;
 import com.ryankenward.grocerystore.models.io.*;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -10,38 +12,19 @@ import java.util.Set;
  */
 public class SetupController {
     
-    private StoreInput storeInput;
-    private DepartmentInput departmentInput;
-    
-    public void setStoreInput(StoreInput storeInput) {
-        this.storeInput = storeInput;
-    }
-    
-    public void setDepartmentInput(DepartmentInput departmentInput) {
-        this.departmentInput = departmentInput;
-    }
-
-    public void readStoreInput() {
-        StoreInput storeInput = new StoreInput();
-        storeInput.readStoreInput();
-        setStoreInput(storeInput);
-    }
-    
-    public void readDepartmentInput() {
+    public void createStoresFromInput() {
+        GroceryStoreInput storeInput = new GroceryStoreInput();
+        List<String[]> s = storeInput.readInput();
+        Set<GroceryStore> stores = storeInput.createFromInput(s);
+        
         DepartmentInput departmentInput = new DepartmentInput();
-        departmentInput.readDepartmentsByStoreInput();
-        setDepartmentInput(departmentInput);
-    }
-    
-    public void CreateStoresFromInput() {
-        if (this.storeInput == null)
-            readStoreInput();
+        List<String[]> d = departmentInput.readInput();
+        Map<Integer, Set<Department>> departments = departmentInput.createFromInput(d);
         
-        if (this.departmentInput == null)
-            readDepartmentInput();
+        GroceryStoreFactory storeFactory = new GroceryStoreFactory();
+        stores = storeFactory.setDepartments(stores, departments);
         
-        StoreFactory storeFactory = new StoreFactory();
-        Set<Store> stores = storeFactory.createStoresFromInput(storeInput, departmentInput);
+        // TODO persist the stores
     }
     
 }

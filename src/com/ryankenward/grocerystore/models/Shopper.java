@@ -9,7 +9,7 @@ import java.util.Map;
 public class Shopper {
     
     private String name;
-    private Store store;
+    private GroceryStore store;
     private boolean member;
     private Cart cart;
     
@@ -21,7 +21,7 @@ public class Shopper {
         return this.name;
     }
     
-    public Store getStore() {
+    public GroceryStore getStore() {
         return this.store;
     }
     
@@ -33,7 +33,7 @@ public class Shopper {
         return this.cart;
     }
     
-    public void shop(Store store, boolean member) {
+    public void shop(GroceryStore store, boolean member) {
         this.store = store;
         this.member = member;
         this.cart = new Cart();

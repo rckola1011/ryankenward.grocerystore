@@ -11,26 +11,26 @@ import java.util.Set;
  */
 public class ItemInput {
     
-    public Set<Item> createItemsByDepartmentFromInput(List<String[]> itemsByDepartmentInput) {
+    public Set<Item> createFromInput(List<String[]> itemsByDepartmentInput) {
         Set<Item> items = new HashSet<>();
         for (String[] departmentItemData : itemsByDepartmentInput) {
             items.add(
-                    createItemFromInput(departmentItemData)
+                    createFromInput(departmentItemData)
             );
         }
         return items;
     }
 
-    public Item createItemFromInput(String[] departmentItemData) {
+    public Item createFromInput(String[] departmentItemData) {
         try {
             return new Item(
                     departmentItemData[2],
                     departmentItemData[3],
-                    new PriceInput().createPriceFromInput(departmentItemData),
+                    new PriceInput().createFromInput(departmentItemData),
                     Integer.parseInt(departmentItemData[8])
             );
         } catch (IndexOutOfBoundsException e) {
-            System.err.println("Inproper input file format.");
+            System.err.println("Improper input file format.");
             e.printStackTrace();
         } catch (NumberFormatException e) {
             System.err.println("Error converting string to number.");

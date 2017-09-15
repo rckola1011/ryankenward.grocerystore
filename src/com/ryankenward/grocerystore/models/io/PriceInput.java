@@ -8,7 +8,7 @@ import com.ryankenward.grocerystore.models.Price;
  */
 public class PriceInput {
 
-    public Price createPriceFromInput(String[] departmentItemData) {
+    public Price createFromInput(String[] departmentItemData) {
         try {
             return new Price(
                     Double.parseDouble(departmentItemData[4]),
@@ -17,7 +17,7 @@ public class PriceInput {
                     Boolean.parseBoolean(departmentItemData[7])
             );
         } catch (IndexOutOfBoundsException e) {
-            System.err.println("Inproper input file format.");
+            System.err.println("Improper input file format.");
             e.printStackTrace();
         } catch (NumberFormatException e) {
             System.err.println("Error converting string to number.");

@@ -5,17 +5,20 @@
  */
 package com.ryankenward.grocerystore;
 
+import com.ryankenward.grocerystore.controllers.SetupController;
+
 /**
  *
  * @author rckola1011
  */
-public class GroceryStore {
+public class Start {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        SetupController setupController = new SetupController();
+        setupController.createStoresFromInput();
     }
     
 }

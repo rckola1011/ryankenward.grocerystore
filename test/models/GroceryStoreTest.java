@@ -12,7 +12,7 @@ import org.junit.Test;
  *
  * @author rckola1011
  */
-public class StoreTest {
+public class GroceryStoreTest {
     
     @Test
     public void getAllItems_ShouldBeFour() {
@@ -27,7 +27,7 @@ public class StoreTest {
         produceDept.setItems(new HashSet<Item>(Arrays.asList(corn, lettuce)));
         
         Set<Department> departments = new HashSet<>(Arrays.asList(dairyDept, produceDept));
-        Store sut = new Store(1, "Ryan's Groceries", true, departments);
+        GroceryStore sut = new GroceryStore(1, "Ryan's Groceries", true, departments);
         Assert.assertEquals(4, sut.getAllItems().size());
     }
     
@@ -39,14 +39,14 @@ public class StoreTest {
         produceDept.setItems(new HashSet<Item>(Arrays.asList(corn, lettuce)));
         
         Set<Department> departments = new HashSet<>(Arrays.asList(produceDept));
-        Store sut = new Store(1, "Ryan's Groceries", true, departments);
+        GroceryStore sut = new GroceryStore(1, "Ryan's Groceries", true, departments);
         Assert.assertEquals(produceDept, sut.getDepartmentByName(Departments.Produce.toString()));
     }
     
     @Test
     public void getDepartmentByName_ShouldBeNull() {
         Set<Department> departments = new HashSet<>();
-        Store sut = new Store(1, "Ryan's Groceries", true, departments);
+        GroceryStore sut = new GroceryStore(1, "Ryan's Groceries", true, departments);
         Assert.assertEquals(null, sut.getDepartmentByName(Departments.Produce.toString()));
     }
 }
